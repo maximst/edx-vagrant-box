@@ -1,11 +1,11 @@
 {
   "_comment": "Build with `packer build -var-file=ubuntu2004.json ubuntu.json`",
-  "vm_name": "ubuntu2004",
+  "vm_name": "juniper_default_2004",
   "cpus": "1",
   "disk_size": "65536",
-  "iso_checksum": "sha256:36f15879bd9dfd061cd588620a164a82972663fdd148cce1f70d57d314c21b73",  
-  "iso_name": "ubuntu-20.04-legacy-server-amd64.iso",
-  "iso_url": "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04-legacy-server-amd64.iso",
+  "iso_checksum": "sha256:f11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2",  
+  "iso_name": "ubuntu-20.04.1-legacy-server-amd64.iso",
+  "iso_url": "http://cdimage.ubuntu.com/ubuntu-legacy-server/releases/20.04/release/ubuntu-20.04.1-legacy-server-amd64.iso",
   "memory": "512",
   "preseed" : "preseed.cfg"
 }
