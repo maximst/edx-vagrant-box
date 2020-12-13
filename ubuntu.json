@@ -200,12 +200,12 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "install_vagrant_key": "true",
-    "iso_checksum": "sha256:a5b0ea5918f850124f3d72ef4b85bda82f0fcd02ec721be19c1a6952791c8ee8",    
-    "iso_name": "ubuntu-18.04.1-server-amd64.iso",
+    "iso_checksum": "sha256:f11bda2f2caed8f420802b59f382c25160b114ccc665dbac9c5046e7fceaced2",    
+    "iso_name": "ubuntu-20.04.1-server-amd64.iso",
     "iso_path": "/Volumes/Storage/software/ubuntu",
-    "iso_url": "http://cdimage.ubuntu.com/ubuntu/releases/18.04/release/ubuntu-18.04.1-server-amd64.iso",
+    "iso_url": "http://cdimage.ubuntu.com/ubuntu/releases/20.04/release/ubuntu-20.04.1-server-amd64.iso",
     "locale": "en_US",
-    "memory": "512",
+    "memory": "4096",
     "no_proxy": "{{env `no_proxy`}}",
     "parallels_guest_os_type": "ubuntu",
     "preseed" : "preseed.cfg",
@@ -218,7 +218,7 @@
     "vagrantfile_template": "",
     "version": "0.1.0",
     "virtualbox_guest_os_type": "Ubuntu_64",
-    "vm_name": "ubuntu1804",
+    "vm_name": "juniper_default_2004",
     "vmware_guest_os_type": "ubuntu-64"
   }
 }

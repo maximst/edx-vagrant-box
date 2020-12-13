@@ -13,7 +13,7 @@ cd /var/tmp/
 export OPENEDX_RELEASE=open-release/juniper.3
 
 
-wget https://raw.githubusercontent.com/edx/configuration/master/util/install/ansible-bootstrap.sh -O - | sudo -E bash
+wget https://raw.githubusercontent.com/edx/configuration/$OPENEDX_RELEASE/util/install/ansible-bootstrap.sh -O - | sudo -E bash
 
 ##
 ## Set ppa repository source for gcc/g++ 4.8 in order to install insights properly
@@ -29,12 +29,12 @@ sudo apt-get upgrade -y
 ##
 ## Install system pre-requisites
 ##
-sudo apt-get install -y build-essential software-properties-common curl git-core libxml2-dev libxslt1-dev python3-pip libmysqlclient-dev python3-apt python3-dev libxmlsec1-dev libfreetype6-dev swig gcc g++
+sudo apt-get install -y build-essential software-properties-common curl git-core libxml2-dev libxslt1-dev python3-pip libmysqlclient-dev python3-apt python3-dev libxmlsec1-dev libfreetype6-dev swig gcc g++ python3-mysqldb
 # ansible-bootstrap installs yaml that pip 19 can't uninstall.
 sudo apt-get remove -y python-yaml
 
-sudo pip install --upgrade pip==20.0.2
-sudo pip install --upgrade setuptools==44.1.0
+sudo -H pip install --upgrade pip==20.0.2
+sudo -H pip install --upgrade setuptools==44.1.0
 sudo -H pip install --upgrade virtualenv==16.7.10
 
 ##
@@ -91,7 +91,7 @@ git pull
 ## Install the ansible requirements
 ##
 cd /var/tmp/configuration
-sudo -H pip3 install -r requirements.txt
+sudo -H pip install -r requirements.txt
 
 sed -i "13 a \    SDISCOVERY_URL_ROOT: 'http://localhost:{{ DISCOVERY_NGINX_PORT }}'" playbooks/vagrant-analytics.yml
 echo "    - discovery" >> playbooks/vagrant-analytics.yml
