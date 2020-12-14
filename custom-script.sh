@@ -29,7 +29,7 @@ sudo apt-get upgrade -y
 ##
 ## Install system pre-requisites
 ##
-sudo apt-get install -y build-essential software-properties-common curl git-core libxml2-dev libxslt1-dev python3-pip libmysqlclient-dev python3-apt python3-dev libxmlsec1-dev libfreetype6-dev swig gcc g++ python3-mysqldb
+sudo apt-get install -y build-essential software-properties-common curl git-core libxml2-dev libxslt1-dev python3-pip libmysqlclient-dev python3-apt python3-dev libxmlsec1-dev libfreetype6-dev swig gcc g++ python3-mysqldb mysql-server
 # ansible-bootstrap installs yaml that pip 19 can't uninstall.
 sudo apt-get remove -y python-yaml
 
@@ -63,7 +63,7 @@ VERSION_VARS=(
     GRADEBOOK_MFE_VERSION
     PROFILE_MFE_VERSION
 )
-
+EXTRA_VARS=''
 for var in ${VERSION_VARS[@]}; do
     # Each variable can be overridden by a similarly-named environment variable,
     # or OPENEDX_RELEASE, if provided.
@@ -74,6 +74,7 @@ for var in ${VERSION_VARS[@]}; do
     fi
 done
 
+#EDXAPP_EDXAPP_SECRET_KEY
 #EXTRA_VARS="-e@$(pwd)/config.yml $EXTRA_VARS"
 
 CONFIGURATION_VERSION=${CONFIGURATION_VERSION-$OPENEDX_RELEASE}
@@ -93,6 +94,7 @@ git pull
 cd /var/tmp/configuration
 sudo -H pip install -r requirements.txt
 
+sed '/- analytics_pipeline/d' playbooks/vagrant-analytics.yml
 sed -i "13 a \    SDISCOVERY_URL_ROOT: 'http://localhost:{{ DISCOVERY_NGINX_PORT }}'" playbooks/vagrant-analytics.yml
 echo "    - discovery" >> playbooks/vagrant-analytics.yml
 
